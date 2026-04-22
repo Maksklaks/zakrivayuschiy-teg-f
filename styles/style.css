@@ -9,8 +9,389 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+html {
+  min-inline-size: 320px;
+  background-color: #fff;
+  min-block-size: 100%;
+}
 
 .page {
+  position: relative;
+  display: flow-root;
+  isolation: isolate;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  color: var(--accent-color, #000);
+  font-family: var(--main-font, "Inter-Variable"), sans-serif;
+  font-weight: var(--text-weight, 400);
+  font-variation-settings: "wght" var(--text-weight, 400);
+  background-color: #fff;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: -1;
+  block-size: var(--header-background-height, 35.8125rem);
+  background-color: var(--page-background-color, #e7e7e7);
+  background-image: var(--page-background);
+  background-size:
+    4px 4px,
+    4px 4px,
+    100% 100%;
+  background-repeat: repeat, repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed;
+}
+
+.content-section {
+  inline-size: var(--content-width, clamp(23.4375rem, 48.3333vw, 43.5rem));
+  margin-inline: auto;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.25rem, 0.911rem + 1.446vw, 2rem);
+  margin-block: 100px;
+  padding-block: clamp(7.5rem, 7.218rem + 1.202vw, 8rem);
+  border: 2px solid var(--accent-color, #000);
+  background-color: var(--button-background-color, #fff);
+  font-family: var(--accent-font, "PressStart2P"), fantasy;
+  text-transform: uppercase;
+}
+
+.header__logo {
+  font-size: clamp(3.0625rem, 2.616rem + 1.906vw, 4.0625rem);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.header__logo:hover {
+  opacity: 0.6;
+}
+
+.header__logo:focus {
+  outline: none;
+}
+
+.header__logo:focus-visible {
+  outline: 2px solid var(--accent-color, #000);
+  outline-offset: 4px;
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.54rem + 1.427vw, 1.438rem);
+  font-weight: 400;
+}
+
+.cards-list {
+  display: grid;
+  gap: 50px;
+}
+
+.footer {
+  padding-block-end: 100px;
+}
+
+.card {
+  border: 2px solid var(--accent-color, #000);
+  background-color: var(--button-background-color, #fff);
+}
+
+.card__title {
+  padding: 4px 10px;
+  font-weight: var(--title-weight, 700);
+  font-size: 18px;
+  line-height: 1.2;
+  font-variation-settings: "wght" var(--title-weight, 700);
+}
+
+.card__image-wrapper {
+  position: relative;
+  border-block: 2px solid var(--accent-color, #000);
+  overflow: hidden;
+}
+
+.card__label {
+  position: absolute;
+  inset-block-start: 25px;
+  inset-inline-end: 13px;
+  z-index: 1;
+  opacity: 0.5;
+  font-family: var(--accent-font, "PressStart2P"), fantasy;
+  font-size: 14px;
+  line-height: 1;
+  mix-blend-mode: hard-light;
+  text-shadow:
+    -1px 0 var(--stroke-color, #fff),
+    0 1px var(--stroke-color, #fff),
+    1px 0 var(--stroke-color, #fff),
+    0 -1px var(--stroke-color, #fff);
+}
+
+@supports ((-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff)) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--stroke-color, #fff);
+    text-stroke: 1px var(--stroke-color, #fff);
+  }
+}
+
+.card__image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.card__image--start {
+  filter: saturate(1.15);
+}
+.card__image--search {
+  filter: grayscale(0.35) sepia(0.5);
+}
+.card__image--doubts {
+  filter: saturate(3) brightness(1.1) contrast(1.05);
+}
+.card__image--perfection {
+  filter: hue-rotate(35deg) contrast(1.15) saturate(1.35) brightness(0.95);
+}
+.card__image--support {
+  filter: invert(1) saturate(0.85) brightness(1.05) contrast(0.9);
+}
+.card__image--adaptation {
+  filter: sepia(0.85) contrast(1.1) brightness(1.05);
+}
+.card__image--fatigue {
+  filter: blur(0.75rem);
+  transform-origin: center;
+}
+.card__image--confidence {
+filter: hue-rotate(90deg) saturate(0.7) brightness(1.08) contrast(0.78) opacity(0.9);
+}
+
+.card__content {
+  display: grid;
+  gap: 25px;
+  padding: 25px;
+}
+
+.card__text {
+  font-family: var(--main-font, "Inter-Variable"), sans-serif;
+  font-weight: var(--text-weight, 400);
+  font-size: 18px;
+  line-height: 1.1667;
+  font-variation-settings: "wght" var(--text-weight, 400);
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
+}
+
+.card__icon-button {
+  display: grid;
+  place-items: center;
+  inline-size: 39px;
+  block-size: 38px;
+  padding: 0;
+  border: none;
+  outline: 2px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition: outline-color 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--accent-color, #000);
+}
+
+.like-icon {
+  display: block;
+  transform-origin: center;
+}
+
+.heart {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.core,
+.main-body {
+  fill: transparent;
+}
+
+.core {
+  transition: fill 0.3s linear 0.03s;
+}
+
+.main-body {
+  transition: fill 0.3s linear;
+}
+
+.contour {
+  fill: var(--contour-color, #000);
+  transition: fill 0.1s linear;
+}
+
+.sparks {
+  fill: var(--animation-fill-color, #ff0000);
+  opacity: 0;
+}
+
+.card__icon-button:hover .core {
+  fill: var(--contour-color, #000);
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--contour-color, #000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.card__icon-button:active .core {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button:active .main-body {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.card__like-button {
+  min-inline-size: 130px;
+  min-block-size: 38px;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--accent-color, #000);
+  background-color: var(--button-background-color, #fff);
+  cursor: pointer;
+  font-family: var(--accent-font, "PressStart2P"), fantasy;
+  font-size: 14px;
+  line-height: 0.9;
+  transition: box-shadow 0.3s ease;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color, #000);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent-color, #000);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--button-text-color, #fff);
+  mix-blend-mode: difference;
+}
+
+.save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  inline-size: fit-content;
+  margin-block-start: 50px;
+  padding: 15px 20px;
+}
+
+.save-button__icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  color: var(--button-text-color, #fff);
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  display: none;
+  inline-size: min(100% - 38px, 353px);
+  padding: 30px;
+  border: 2px solid var(--accent-color, #000);
+  color: var(--accent-color, #000);
+  background-color: var(--button-background-color, #fff);
+  font-family: var(--accent-font, "PressStart2P"), fantasy;
+}
+
+.dialog[open] {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  gap: 30px 20px;
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog__icon {
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.dialog__text {
+  max-inline-size: 234px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.dialog__form {
+  grid-column: 1 / -1;
+}
+
+.dialog__button {
+  inline-size: 100%;
+  min-block-size: 38px;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .card__label {
+    inset-inline-end: 11px;
+  }
+
+  .card__image {
+    block-size: auto;
+    aspect-ratio: auto;
+    object-fit: initial;
+    object-position: initial;
+  }
+
+  .save-button {
+    flex-direction: column;
+    inline-size: 306px;
+  }
+
+  .save-button__icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 }
