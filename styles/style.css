@@ -9,11 +9,6 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-html {
-  min-inline-size: 320px;
-  background-color: #fff;
-  min-block-size: 100%;
-}
 
 .page {
   position: relative;
@@ -23,37 +18,23 @@ html {
   min-block-size: 100dvb;
   color: var(--accent-color, #000);
   font-family: var(--main-font, "Inter-Variable"), sans-serif;
-  font-weight: var(--text-weight, 400);
-  font-variation-settings: "wght" var(--text-weight, 400);
-  background-color: #fff;
-}
-
-.page::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
-  z-index: -1;
-  block-size: var(--header-background-height, 35.8125rem);
+  font-weight: var(--text-weight, 410);
+  font-variation-settings: "wght" var(--text-weight, 410);
   background-color: var(--page-background-color, #e7e7e7);
   background-image: var(--page-background);
-  background-size:
-    4px 4px,
-    4px 4px,
-    100% 100%;
-  background-repeat: repeat, repeat, no-repeat;
-  background-attachment: fixed, fixed, fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .content-section {
-  inline-size: var(--content-width, clamp(23.4375rem, 48.3333vw, 43.5rem));
+  max-inline-size: 700px;
   margin-inline: auto;
 }
 
 .header {
   display: grid;
   justify-items: center;
-  gap: clamp(1.25rem, 0.911rem + 1.446vw, 2rem);
   margin-block: 100px;
   padding-block: clamp(7.5rem, 7.218rem + 1.202vw, 8rem);
   border: 2px solid var(--accent-color, #000);
@@ -63,36 +44,19 @@ html {
 }
 
 .header__logo {
-  font-size: clamp(3.0625rem, 2.616rem + 1.906vw, 4.0625rem);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.header__logo:hover {
-  opacity: 0.6;
-}
-
-.header__logo:focus {
-  outline: none;
-}
-
-.header__logo:focus-visible {
-  outline: 2px solid var(--accent-color, #000);
-  outline-offset: 4px;
+  margin-block-end: 20px;
 }
 
 .header__title {
-  font-size: clamp(0.875rem, 0.54rem + 1.427vw, 1.438rem);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-weight: 400;
 }
 
 .cards-list {
   display: grid;
   gap: 50px;
-}
-
-.footer {
-  padding-block-end: 100px;
 }
 
 .card {
@@ -102,16 +66,17 @@ html {
 
 .card__title {
   padding: 4px 10px;
-  font-weight: var(--title-weight, 700);
+  font-weight: var(--title-weight, 715);
   font-size: 18px;
   line-height: 1.2;
-  font-variation-settings: "wght" var(--title-weight, 700);
+  font-variation-settings: "wght" var(--title-weight, 715);
 }
 
 .card__image-wrapper {
   position: relative;
   border-block: 2px solid var(--accent-color, #000);
   overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .card__label {
@@ -142,32 +107,34 @@ html {
 .card__image {
   display: block;
   inline-size: 100%;
-  block-size: auto;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
 }
 
-.card__image--start {
+.card__filter-saturate {
   filter: saturate(1.15);
 }
-.card__image--search {
+.card__filter-grayscale_sepia {
   filter: grayscale(0.35) sepia(0.5);
 }
-.card__image--doubts {
+.card__filter-sat_bright_cont {
   filter: saturate(3) brightness(1.1) contrast(1.05);
 }
-.card__image--perfection {
+.card__filter-multiple {
   filter: hue-rotate(35deg) contrast(1.15) saturate(1.35) brightness(0.95);
 }
-.card__image--support {
+.card__filter-invert_sat_bright_cont {
   filter: invert(1) saturate(0.85) brightness(1.05) contrast(0.9);
 }
-.card__image--adaptation {
+.card__filter-sepia_cont_bright {
   filter: sepia(0.85) contrast(1.1) brightness(1.05);
 }
-.card__image--fatigue {
+.card__filter-blur {
   filter: blur(0.75rem);
   transform-origin: center;
 }
-.card__image--confidence {
+.card__filter-hue_sat_bright_cont_op {
   filter: hue-rotate(90deg) saturate(0.7) brightness(1.08) contrast(0.78)
     opacity(0.9);
 }
@@ -180,10 +147,10 @@ html {
 
 .card__text {
   font-family: var(--main-font, "Inter-Variable"), sans-serif;
-  font-weight: var(--text-weight, 400);
+  font-weight: var(--text-weight, 410);
   font-size: 18px;
   line-height: 1.1667;
-  font-variation-settings: "wght" var(--text-weight, 400);
+  font-variation-settings: "wght" var(--text-weight, 410);
 }
 
 .card__buttons {
@@ -320,7 +287,9 @@ html {
   gap: 8px;
   inline-size: fit-content;
   margin-block-start: 50px;
+  margin-block-end: 100px;
   padding: 15px 20px;
+  max-inline-size: 100%;
 }
 
 .save-button__icon {
@@ -379,16 +348,9 @@ html {
     inset-inline-end: 11px;
   }
 
-  .card__image {
-    block-size: auto;
-    aspect-ratio: auto;
-    object-fit: initial;
-    object-position: initial;
-  }
-
   .save-button {
     flex-direction: column;
-    inline-size: 306px;
+    max-inline-size: 100%;
   }
 
   .save-button__icon {

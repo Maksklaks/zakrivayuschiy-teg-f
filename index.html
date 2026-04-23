@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Закрывающий тег</title>
     <link rel="icon" href="./images/favicon.ico" sizes="any" />
-    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./images/favicon.png" />
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
@@ -14,14 +14,6 @@
     <link rel="stylesheet" href="./styles/animations.css" />
   </head>
   <body class="page">
-    <svg class="visually-hidden" aria-hidden="true">
-      <symbol id="floppy-icon" viewBox="0 0 21 21">
-        <path
-          fill="currentColor"
-          d="M0 0h21v21H0V0Zm3 3v15h15V6h-3v6H6V3H3Zm6 0v6h6V3H9Zm0 12v3h6v-3H9Z"
-        />
-      </symbol>
-    </svg>
     <header class="header content-section">
       <a class="header__logo" href="./">&lt;/HTML&gt;</a>
       <h1 class="header__title">закрывающий тег</h1>
@@ -35,10 +27,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Предвкушение</span>
             <img
-              class="card__image card__image--start"
+              class="card__image card__filter-saturate"
               src="./images/card-1.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Начало пути в обучении"
@@ -103,10 +93,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Восторг</span>
             <img
-              class="card__image card__image--search"
+              class="card__image card__filter-grayscale_sepia"
               src="./images/card-2.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Первые шаги в изучении фронтенда"
@@ -172,10 +160,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Кропотливый труд</span>
             <img
-              class="card__image card__image--doubts"
+              class="card__image card__filter-sat_bright_cont"
               src="./images/card-3.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Момент неуверенности и сомнений"
@@ -239,10 +225,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Красота</span>
             <img
-              class="card__image card__image--perfection"
+              class="card__image card__filter-multiple"
               src="./images/card-4.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Стремление сделать идеально"
@@ -306,10 +290,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Моя поддержка</span>
             <img
-              class="card__image card__image--support"
+              class="card__image card__filter-invert_sat_bright_cont"
               src="./images/card-5.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Поддержка на пути обучения"
@@ -377,10 +359,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Адаптив</span>
             <img
-              class="card__image card__image--adaptation"
+              class="card__image card__filter-sepia_cont_bright"
               src="./images/card-6.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Поиск решений и новых подходов"
@@ -442,10 +422,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Отрицание</span>
             <img
-              class="card__image card__image--fatigue"
+              class="card__image card__filter-blur"
               src="./images/card-7.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Усталость и желание сделать паузу"
@@ -512,10 +490,8 @@
           <div class="card__image-wrapper">
             <span class="card__label">Мотивация и заряд</span>
             <img
-              class="card__image card__image--confidence"
+              class="card__image card__filter-hue_sat_bright_cont_op"
               src="./images/card-8.jpg"
-              width="696"
-              height="700"
               loading="lazy"
               decoding="async"
               alt="Ощущение роста и уверенности"
@@ -579,7 +555,7 @@
         </article>
       </section>
     </main>
-    <footer class="footer">
+
       <button
         class="save-button button content-section"
         type="button"
@@ -591,27 +567,26 @@
           height="21"
           aria-hidden="true"
         >
-          <use href="#floppy-icon"></use>
+          <use href="/svg/floppy.svg#floppy-icon"></use>
         </svg>
         <span class="button__text">Сохранить на память</span>
       </button>
 
       <dialog class="dialog" id="save-dialog" aria-labelledby="dialog-title">
         <svg class="dialog__icon" width="39" height="39" aria-hidden="true">
-          <use href="#floppy-icon"></use>
+          <use href="/svg/floppy.svg#floppy-icon"></use>
         </svg>
-
         <p class="dialog__text" id="dialog-title">
           Вставьте дискету, чтобы продолжить
         </p>
 
         <form class="dialog__form" method="dialog">
           <button class="dialog__button button" type="submit">
-            <span class="button__text">ОК</span>
+            <span class="button__text">ок</span>
           </button>
         </form>
       </dialog>
-    </footer>
+
     <script src="./scripts/like.js"></script>
   </body>
 </html>
